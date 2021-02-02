@@ -1,10 +1,10 @@
 import { text, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
-import { Appointments as AppointmentsC } from ".";
+import { AppointmentItem as AppointmentItemC } from ".";
 
 export default {
   title: "Common/Appointments",
-  component: AppointmentsC,
+  component: AppointmentItemC,
   decorators: [withKnobs],
   excludeStories: /.*Data$/,
   parameters: {
@@ -12,8 +12,8 @@ export default {
   },
 };
 
-export const Appointments = (): JSX.Element => (
-  <AppointmentsC
+export const AppointmentItem = (): JSX.Element => (
+  <AppointmentItemC
     customer={{
       firstName: text("FirstName", "Ashley"),
     }}
