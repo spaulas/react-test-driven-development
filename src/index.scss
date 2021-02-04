@@ -1,0 +1,12 @@
+@import "@styles/imports.scss";
+
+body {
+  @include body;
+  margin: 0;
+  background: $pink-lighter;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
