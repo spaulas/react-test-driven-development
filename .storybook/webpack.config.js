@@ -12,6 +12,7 @@ module.exports = async ({ config }) => {
             '@styles': resolve('../src/styles'),
             '@pages': resolve('../src/pages'),
             '@data': resolve('../src/sampleData.ts'),
+            '@test': resolve('../src/test'),
         },
     });
 

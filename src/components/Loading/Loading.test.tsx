@@ -1,16 +1,16 @@
 import React from "react";
 import { Loading } from ".";
-import ReactDOM from "react-dom";
+import { CreateContainerType, createContainer } from "@test/domManipulators";
 
 describe("<AppointmentItem />", () => {
-  let container: Element;
+  let container: CreateContainerType["container"];
+  let render: CreateContainerType["render"];
 
   beforeEach(() => {
-    container = document.createElement("div");
+    const result = createContainer();
+    container = result.container;
+    render = result.render;
   });
-
-  const render = (component: JSX.Element) =>
-    ReactDOM.render(component, container);
 
   const ChildrenComponent = () => <div id="child">Child Component</div>;
 

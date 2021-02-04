@@ -1,16 +1,16 @@
 import React from "react";
 import { DataLine } from ".";
-import ReactDOM from "react-dom";
+import { CreateContainerType, createContainer } from "@test/domManipulators";
 
 describe("<DataLine />", () => {
-  let container: Element;
+  let container: CreateContainerType["container"];
+  let render: CreateContainerType["render"];
 
   beforeEach(() => {
-    container = document.createElement("div");
+    const result = createContainer();
+    container = result.container;
+    render = result.render;
   });
-
-  const render = (component: JSX.Element) =>
-    ReactDOM.render(component, container);
 
   it("renders the wrapper with the correct id", () => {
     const field = "Last Name";

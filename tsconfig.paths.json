@@ -8,7 +8,8 @@
             "@messages/*": ["src/constants/messages/*"],
             "@styles/*": ["src/styles/*"],
             "@pages/*": ["src/pages/*"],
-            "@data": ["src/sampleData.ts"]
+            "@data": ["src/sampleData.ts"],
+            "@test/*": ["src/test/*"],
           },
           "jsx": "react"
     }

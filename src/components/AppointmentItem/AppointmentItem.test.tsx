@@ -1,19 +1,19 @@
 import React from "react";
 import { AppointmentItem } from ".";
-import ReactDOM from "react-dom";
 import { Props } from "./types";
+import { CreateContainerType, createContainer } from "@test/domManipulators";
 
 describe("<AppointmentItem />", () => {
-  let container: Element;
+  let container: CreateContainerType["container"];
+  let render: CreateContainerType["render"];
   let customer: Props["customer"];
   let timeStamp: Props["timeStamp"];
 
   beforeEach(() => {
-    container = document.createElement("div");
-  });
-
-  const render = (component: JSX.Element) =>
-    ReactDOM.render(component, container);
+    const result = createContainer();
+    container=result.container;
+    render=result.render
+  })
 
   const checkPrintedData = (customer: Props["customer"]) => {
     expect(container.textContent).toMatch(`Todays appointment at ${timeStamp}`);

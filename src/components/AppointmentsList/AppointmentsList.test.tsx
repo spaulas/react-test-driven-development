@@ -1,18 +1,18 @@
 import React from "react";
 import { AppointmentsList } from ".";
-import ReactDOM from "react-dom";
 import { Props } from "./types.d";
 import ReactTestUtils from "react-dom/test-utils";
+import { CreateContainerType, createContainer } from "@test/domManipulators";
 
 describe("<AppointmentList />", () => {
-  let container: Element;
+  let container: CreateContainerType["container"];
+  let render: CreateContainerType["render"];
 
   beforeEach(() => {
-    container = document.createElement("div");
+    const result = createContainer();
+    container = result.container;
+    render = result.render;
   });
-
-  const render = (component: JSX.Element) =>
-    ReactDOM.render(component, container);
 
   const today = new Date();
   const appointments: Props["appointments"] = [
