@@ -1,6 +1,7 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { AppointmentsList as AppointmentsListC } from ".";
+import { sampleAppointments } from "@data";
 
 export default {
   title: "Common/Appointments",
@@ -12,4 +13,6 @@ export default {
   },
 };
 
-export const AppointmentsList = (): JSX.Element => <AppointmentsListC />;
+export const AppointmentsList = (): JSX.Element => (
+  <AppointmentsListC appointments={sampleAppointments} />
+);

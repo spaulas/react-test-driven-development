@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { Props } from "./types.d";
-import { AppointmentItem } from "../AppointmentItem";
+import { AppointmentItem } from "@components/AppointmentItem";
+import { getTimeStamp } from "@utils/convertFunctions";
+import "./AppointmentsList.scss";
 
 function AppointmentsList({ appointments }: Props): JSX.Element {
-
-  const [selectedAppointment, setSelectAppointment] = useState<number>(0)
-
-  const getTimeStamp = (time: number): string => {
-    const [h, m] = new Date(time).toTimeString().split(":");
-    return `${h}:${m}`;
-  };
-  
+  const [selectedAppointment, setSelectAppointment] = useState<number>(0);
 
   return (
-    <div id="appointmentsList">
-      <ol>
+    <div id="appointments-list" className="appointments-list">
+      <ol className="appointments-list--time-list">
         {appointments.map((appointment, i) => (
           <li key={appointment.startsAt}>
-            <button type="button" onClick={()=>setSelectAppointment(i)}>{getTimeStamp(appointment.startsAt)}</button>
+            <button
+              className="appointments-list--time-button"
+              type="button"
+              onClick={() => setSelectAppointment(i)}
+            >
+              <div />
+              <span>{getTimeStamp(appointment.startsAt)}</span>
+            </button>
           </li>
         ))}
       </ol>
       {appointments.length === 0 ? (
-        <p>There are no appointments scheduled for today</p>
+        <p className="appointments-list--empty">
+          There are no appointments scheduled for today
+        </p>
       ) : (
-        <AppointmentItem customer={appointments[selectedAppointment].customer} />
+        <AppointmentItem
+          extraClass="appointments-list--item"
+          timeStamp={getTimeStamp(appointments[selectedAppointment].startsAt)}
+          customer={appointments[selectedAppointment].customer}
+        />
       )}
     </div>
   );

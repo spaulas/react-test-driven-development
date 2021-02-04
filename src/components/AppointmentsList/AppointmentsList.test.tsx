@@ -20,14 +20,31 @@ describe("<AppointmentList />", () => {
       startsAt: today.setHours(12, 0),
       customer: {
         firstName: "Ashley",
+        lastName: "Holland",
+        phoneNumber: 2154528734,
+        stylist: "Deanne Andersen",
+        service: "depilation",
+        notes:
+          "or again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. ",
       },
     },
-    { startsAt: today.setHours(13, 0), customer: { firstName: "Jordan" } },
+    {
+      startsAt: today.setHours(13, 0),
+      customer: {
+        firstName: "Jordan",
+        lastName: "Oconnell",
+        phoneNumber: 2192240367,
+        stylist: "Ingrid Johnson",
+        service: "beard trim",
+        notes:
+          " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    },
   ];
   it("renders the wrapper with the correct id", () => {
     render(<AppointmentsList appointments={appointments} />);
 
-    expect(container.querySelector("div#appointmentsList")).not.toBeNull();
+    expect(container.querySelector("div#appointments-list")).not.toBeNull();
   });
 
   it("renders multiple appointments in an ol element", () => {
@@ -59,7 +76,9 @@ describe("<AppointmentList />", () => {
 
   it("selects the first appointment by default", () => {
     render(<AppointmentsList appointments={appointments} />);
-    expect(container.textContent).toMatch("Ashley");
+
+    const appointmentItem = container.querySelectorAll("#appointment-item");
+    expect(appointmentItem[0].textContent).toMatch("Ashley");
   });
 
   it("has a button element in each li", () => {
