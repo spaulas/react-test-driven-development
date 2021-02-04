@@ -1,0 +1,19 @@
+@import "@styles/imports.scss";
+
+.appointment-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &--title {
+    @include title;
+    width: 100%;
+    margin: 32px 0 32px 0;
+    color: $purple-darker;
+    text-transform: uppercase;
+  }
+
+  &--data-container{
+    padding: 0 64px;
+  }
+}
