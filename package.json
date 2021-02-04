@@ -12,6 +12,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "commitizen": "^4.2.3",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -20,10 +21,10 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "commit": "cz",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -46,6 +47,17 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "@components/(.*)": "<rootDir>/src/components/$1",
+      "@constants/(.*)": "<rootDir>/src/constants/$1",
+      "@utils/(.*)": "<rootDir>/src/constants/utils/$1",
+      "@messages/(.*)": "<rootDir>/src/constants/messages/$1",
+      "@styles/(.*)": "<rootDir>/src/styles/$1",
+      "@pages/(.*)": "<rootDir>/src/pages/$1",
+      "@data": "<rootDir>/src/sampleData.ts"
+    }
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.1.16",
     "@storybook/addon-essentials": "^6.1.16",
@@ -56,6 +68,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "eslint": "^7.19.0",
-    "eslint-plugin-react": "^7.22.0"
+    "eslint-plugin-react": "^7.22.0",
+    "react-app-rewired": "^2.1.8"
   }
 }
