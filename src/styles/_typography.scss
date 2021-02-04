@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/Karla-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/Karla-Italic-VariableFont_wght.ttf") format("truetype");
+
+  font-style: italic;
+}
+
+@mixin title {
+  font-family: "Karla";
+  font-size: 24px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin label {
+  font-family: "Karla";
+  font-size: 16px;
+  line-height: 16px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin body {
+  font-family: "Karla";
+  font-size: 12px;
+  line-height: 16px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin notes {
+  font-family: "Karla";
+  font-size: 10px;
+  line-height: 10px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin hover-effect {
+  background-image: linear-gradient(
+    transparent calc(65% - 5px),
+    darken(rgba($pink-light, 0.5), 15%) 5px
+  );
+  background-size: 0;
+  background-repeat: no-repeat;
+  display: inline;
+  transition: 0.5s ease;
+
+  &:hover {
+    background-size: 100%;
+  }
+}
