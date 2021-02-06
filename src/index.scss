@@ -4,6 +4,22 @@ body {
   @include body;
   margin: 0;
   background: $pink-lighter;
+  font-family: "Karla";
+
+  .primary-button { 
+    background: $purple-darker;
+    border-radius: 8px;
+    color: $pink-lighter;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    transition: 0.35s ease;
+
+    &:hover {
+      background: $purple-dark;
+      transform: scale(1.1);
+    }
+  }
 }
 
 code {
