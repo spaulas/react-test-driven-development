@@ -89,7 +89,7 @@ describe("<CustomerForm />", () => {
         />
       );
 
-      await ReactTestUtils.Simulate.submit(formId());
+      ReactTestUtils.Simulate.submit(formId());
     });
   };
 
@@ -106,10 +106,11 @@ describe("<CustomerForm />", () => {
         />
       );
 
-      await ReactTestUtils.Simulate.change(formField(fieldName), {
+      ReactTestUtils.Simulate.change(formField(fieldName), {
         target: { value: newValue },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any);
-      await ReactTestUtils.Simulate.submit(formId());
+      ReactTestUtils.Simulate.submit(formId());
     });
   };
 
@@ -125,6 +126,12 @@ describe("<CustomerForm />", () => {
     render(<CustomerForm {...emptyProps} />);
     const form = formId();
     expect(form).not.toBeNull();
+  });
+
+  it("has a submit button", () => {
+    render(<CustomerForm {...emptyProps} />);
+    const submitButton = container.querySelector("input[type='submit']");
+    expect(submitButton).not.toBeNull();
   });
 
   describe("firstName field", () => {
