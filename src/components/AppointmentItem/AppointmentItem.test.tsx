@@ -11,9 +11,9 @@ describe("<AppointmentItem />", () => {
 
   beforeEach(() => {
     const result = createContainer();
-    container=result.container;
-    render=result.render
-  })
+    container = result.container;
+    render = result.render;
+  });
 
   const checkPrintedData = (customer: Props["customer"]) => {
     expect(container.textContent).toMatch(`Todays appointment at ${timeStamp}`);

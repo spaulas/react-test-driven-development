@@ -108,7 +108,7 @@ describe("<CustomerForm />", () => {
 
       ReactTestUtils.Simulate.change(formField(fieldName), {
         target: { value: newValue },
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any);
       ReactTestUtils.Simulate.submit(formId());
     });

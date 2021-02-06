@@ -87,6 +87,7 @@ describe("<AppointmentList />", () => {
     const buttons = container.querySelectorAll("li>button");
 
     expect(buttons).toHaveLength(appointments.length);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((buttons[0] as any).type).toEqual("button");
   });
 
