@@ -111,3 +111,24 @@ export const sampleAppointments = [
     },
   },
 ];
+
+export const sampleStylists = [
+  {
+    name: "Deanne Andersen",
+    services: ["Beard Trim", "Haircut & Beard Trim"],
+  },
+  { name: "Roza Barton", services: ["Haircut", "Haircut & Color", "Blow-Dry"] },
+  { name: "Ingrid Johnson", services: ["Extensions"] },
+];
+
+export const sampleServices = [
+  "Haircut",
+  "Blow-Dry",
+  "Haircut & Color",
+  "Beard Trim",
+  "Haircut & Beard Trim",
+  "Extensions",
+];
+
+export const openingTime = 9;
+export const closingTime = 19;

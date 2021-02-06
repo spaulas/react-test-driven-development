@@ -3,7 +3,7 @@ import { Props, FormType } from "./types.d";
 import "../Form.scss";
 import { TimeSlot } from "@components/TimeSlot";
 
-function AppointmentForm({ services, values, onSubmit }: Props): JSX.Element {
+function AppointmentForm({ services, values, onSubmit, openingTime, closingTime }: Props): JSX.Element {
   const today = new Date();
   const [appointment, setAppointment] = useState<FormType>(values);
 
@@ -35,17 +35,17 @@ function AppointmentForm({ services, values, onSubmit }: Props): JSX.Element {
       </div>
       <div className="form--field-wrapper">
         <TimeSlot
-          name="timeSlot"
-          id="timeSlot"
-          openingTime={9}
-          closingTime={19}
+          name="startsAt"
+          id="startsAt"
+          openingTime={openingTime}
+          closingTime={closingTime}
           today={new Date()}
-          value={appointment.timeSlot}
+          value={appointment.startsAt}
           availableTimeSlots={[
             { startsAt: today.setHours(17, 0, 0, 0) },
             { startsAt: today.setHours(18, 30, 0, 0) },
           ]}
-          onChange={(value) => handleChange({ timeSlot: value })}
+          onChange={(value) => handleChange({ startsAt: value })}
         />
       </div>
       <input className="primary-button" type="submit" value="Add" />

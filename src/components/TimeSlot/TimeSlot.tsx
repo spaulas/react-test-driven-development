@@ -12,6 +12,7 @@ function TimeSlot({
   closingTime,
   availableTimeSlots,
 }: Props): JSX.Element {
+  // merges the date from the column with the time from the row
   const mergeDateAndTime = (date: number, timeSlot: number) => {
     const time = new Date(timeSlot);
     return new Date(date).setHours(time.getHours(), time.getMinutes(), 0, 0);

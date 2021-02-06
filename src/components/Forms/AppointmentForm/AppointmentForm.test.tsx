@@ -178,7 +178,7 @@ describe("<AppointmentForm />", () => {
     it("renders a table for time slots", () => {
       render(<AppointmentForm {...defaultProps} />);
 
-      expect(formId().querySelector("table#timeSlot")).not.toBeNull();
+      expect(formId().querySelector("table#startsAt")).not.toBeNull();
     });
   });
 });

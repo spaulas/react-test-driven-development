@@ -1,12 +1,14 @@
 export type Props = {
-  values: { service?: string; timeSlot?: number };
+  values: { service?: string; startsAt?: number };
   onSubmit: (values: FormValues) => void;
   services: Array<string>;
+  openingTime: number;
+  closingTime: number;
 };
 
-export type FormKeys = "service" | "timeSlot";
+export type FormKeys = "service" | "startsAt";
 
 export type FormType = {
   service?: string;
-  timeSlot?: number;
+  startsAt?: number;
 };

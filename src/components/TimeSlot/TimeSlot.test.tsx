@@ -11,8 +11,8 @@ describe("<TimeSlot />", () => {
     openingTime: 9,
     closingTime: 19,
     today: new Date(),
-    id: "timeSlot",
-    name: "timeSlot",
+    id: "startsAt",
+    name: "startsAt",
     availableTimeSlots: [],
     onChange: () => null,
   };
@@ -139,8 +139,8 @@ describe("<TimeSlot />", () => {
         {...defaultProps}
         availableTimeSlots={availableTimeSlots}
         value={availableTimeSlots[0].startsAt}
-        onChange={(timeSlot) =>
-          expect(timeSlot).toEqual(availableTimeSlots[1].startsAt)
+        onChange={(startsAt) =>
+          expect(startsAt).toEqual(availableTimeSlots[1].startsAt)
         }
       />
     );
@@ -148,7 +148,7 @@ describe("<TimeSlot />", () => {
     ReactTestUtils.Simulate.change(startsAtField(1), {
       target: {
         value: availableTimeSlots[1].startsAt,
-        name: "timeSlot",
+        name: "startsAt",
       } as any,
     });
   });
