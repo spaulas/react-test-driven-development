@@ -1,0 +1,17 @@
+@import "@styles/imports.scss";
+
+.add-customer-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0 48px;
+
+    &--title {
+        @include title;
+        align-self: flex-start;
+        color: $purple-darker;
+        text-transform: uppercase;
+        margin: 32px 0;
+    }
+}
