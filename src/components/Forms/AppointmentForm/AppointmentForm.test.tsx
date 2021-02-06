@@ -29,7 +29,8 @@ describe("<AppointmentForm />", () => {
     container.querySelector("form[id='appointment']") as any;
 
   // returns the field with fieldName from form with id "appointment"
-  const formField = (fieldName: string) => formId()?.elements[fieldName];
+  const formField = (fieldName: string) =>
+    formId()?.elements[fieldName] || null;
 
   // searchs the DOM tree for a particular node
   const findOption = (dropdwonNode: Node, textContent: string) => {
@@ -41,10 +42,7 @@ describe("<AppointmentForm />", () => {
   // It functions
 
   // checks a form field's existence, tagName and type
-  const itRendersFormTypeBox = (
-    fieldName: FormKeys,
-    tagName: string,
-  ) => {
+  const itRendersFormTypeBox = (fieldName: FormKeys, tagName: string) => {
     it(`renders as a ${tagName} box`, () => {
       render(<AppointmentForm {...emptyProps} />);
       const field = formField(fieldName);
@@ -133,7 +131,6 @@ describe("<AppointmentForm />", () => {
   });
 
   describe("service field", () => {
-
     it("initially has a blank value chosen", () => {
       render(<AppointmentForm {...emptyProps} />);
 
@@ -175,7 +172,13 @@ describe("<AppointmentForm />", () => {
     itHasSameLabelId("service", "service");
     itSavesInitialValue("service");
     itSavesNewValue("service", "haircut");
+  });
 
+  describe("time slot table", () => {
+    it("renders a table for time slots", () => {
+      render(<AppointmentForm {...defaultProps} />);
 
+      expect(formId().querySelector("table#timeSlot")).not.toBeNull();
+    });
   });
 });
