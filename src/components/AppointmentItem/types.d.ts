@@ -3,7 +3,7 @@ export type Props = {
     firstName: string;
     lastName: string;
     phoneNumber: number;
-    service: ServiceType;
+    service: string;
     stylist: string;
     notes?: string;
   };

@@ -1,7 +1,7 @@
 import { text, number, select, withKnobs } from "@storybook/addon-knobs";
 import React from "react";
 import { AppointmentItem as AppointmentItemC } from ".";
-import { SERVICES } from "@constants/enum";
+
 
 export default {
   title: "Common/Appointments",
@@ -14,10 +14,9 @@ export default {
 };
 
 const serviceOptions = {
-  haircut: SERVICES.HAIRCUT,
-  beardtrim: SERVICES.BEARDTRIM,
-  nails: SERVICES.NAILS,
-  depilation: SERVICES.DEPILATION,
+  haircut: "Haircut",
+  beardtrim: "Beard Trim",
+  extensions: "Extensions",
 };
 
 export const AppointmentItem = (): JSX.Element => (
@@ -27,7 +26,7 @@ export const AppointmentItem = (): JSX.Element => (
       firstName: text("First Name", "Ashley"),
       lastName: text("Last Name", "Page"),
       phoneNumber: number("Phone Number", 123456789),
-      service: select("Service", serviceOptions, SERVICES.HAIRCUT),
+      service: select("Service", serviceOptions, "haircut"),
       stylist: text("Stylist", "Deanne Andersen"),
       notes: text("Notes", "Add notes here"),
     }}
