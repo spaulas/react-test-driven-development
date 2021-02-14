@@ -14,5 +14,5 @@
 <h3 align="left">Description</h3>
 
 <p>I had already done tests with Jest for React projects, but I decided it was time to study it properly, and, of course, start coding applying a test-driven development.</p>
-<p>I have been coding a long while studying this book, except I decided it would be better to not only do as the book instructs, but also change it a bit to make it a different project.</p>
+<p>I have been coding along while studying this book, except I decided it would be better to not only do as the book instructs, but also change it a bit to make it a different project.</p>
 <p>It is still under development.</p>
