@@ -1,8 +1,9 @@
 import React from "react";
 import { Props } from "./types.d";
 import { timeIncrements } from "@utils/timeFunctions";
+import "./TimeSlots.scss";
 
-function TimeSlot({
+function TimeSlots({
   id,
   value,
   name,
@@ -15,7 +16,7 @@ function TimeSlot({
   // merges the date from the column with the time from the row
   const mergeDateAndTime = (date: number, timeSlot: number) => {
     const time = new Date(timeSlot);
-    return new Date(date).setHours(time.getHours(), time.getMinutes(), 0, 0);
+    return new Date(date).setHours(time.getHours(), time.getMinutes());
   };
 
   // calculate the list of daily time slots
@@ -48,14 +49,23 @@ function TimeSlot({
       )
     ) {
       return (
-        <input name={name} type="radio" value={startsAt} checked={startsAt === value} onChange={() => onChange(startsAt)} />
+        <div className="radio-container">
+          <input
+            name={name}
+            type="radio"
+            value={startsAt}
+            checked={startsAt === value}
+            onChange={() => onChange(startsAt)}
+          />
+          <span onClick={() => onChange(startsAt)} className="radio"></span>
+        </div>
       );
     }
     return null;
   };
 
   return (
-    <table id={id}>
+    <table id={id} className="time-slots">
       <thead>
         <tr>
           <th />
@@ -83,4 +93,4 @@ function TimeSlot({
   );
 }
 
-export default TimeSlot;
+export default TimeSlots;

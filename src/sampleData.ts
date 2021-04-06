@@ -1,4 +1,11 @@
 const today = new Date();
+const midnight = new Date(today).setHours(0, 0, 0, 0);
+const day2 = new Date(midnight + 24 * 60 * 60 * 1000 * 1);
+const day3 = new Date(midnight + 24 * 60 * 60 * 1000 * 2);
+const day4 = new Date(midnight + 24 * 60 * 60 * 1000 * 3);
+const day5 = new Date(midnight + 24 * 60 * 60 * 1000 * 4);
+const day6 = new Date(midnight + 24 * 60 * 60 * 1000 * 5);
+const day7 = new Date(midnight + 24 * 60 * 60 * 1000 * 6);
 
 const at = (hours: number) => today.setHours(hours, 0);
 
@@ -115,10 +122,52 @@ export const sampleAppointments = [
 export const sampleStylists = [
   {
     name: "Deanne Andersen",
-    services: ["Beard Trim", "Haircut & Beard Trim"],
+    services: ["Beard Trim", "Haircut", "Haircut & Beard Trim"],
+    availableTimeSlots: [
+      { startsAt: today.setHours(12, 0, 0, 0) },
+      { startsAt: today.setHours(16, 30, 0, 0) },
+      { startsAt: day2.setHours(14, 30) },
+      { startsAt: day2.setHours(15, 0) },
+      { startsAt: day3.setHours(17, 0) },
+      { startsAt: day3.setHours(18, 0) },
+      { startsAt: day4.setHours(18, 30) },
+      { startsAt: day5.setHours(15, 0) },
+      { startsAt: day5.setHours(16, 0) },
+      { startsAt: day6.setHours(17, 0) },
+    ],
   },
-  { name: "Roza Barton", services: ["Haircut", "Haircut & Color", "Blow-Dry"] },
-  { name: "Ingrid Johnson", services: ["Extensions"] },
+  {
+    name: "Roza Barton",
+    services: ["Haircut", "Haircut & Color", "Blow-Dry"],
+    availableTimeSlots: [
+      { startsAt: today.setHours(9, 0, 0, 0) },
+      { startsAt: today.setHours(10, 30, 0, 0) },
+      { startsAt: day2.setHours(11, 30) },
+      { startsAt: day2.setHours(12, 0) },
+      { startsAt: day3.setHours(9, 0) },
+      { startsAt: day3.setHours(9, 30) },
+      { startsAt: day3.setHours(10, 30) },
+      { startsAt: day5.setHours(11, 0) },
+      { startsAt: day5.setHours(12, 0) },
+      { startsAt: day6.setHours(9, 0) },
+    ],
+  },
+  {
+    name: "Ingrid Johnson",
+    services: ["Extensions"],
+    availableTimeSlots: [
+      { startsAt: today.setHours(9, 0, 0, 0) },
+      { startsAt: today.setHours(15, 30, 0, 0) },
+      { startsAt: day2.setHours(17, 30) },
+      { startsAt: day2.setHours(9, 30) },
+      { startsAt: day3.setHours(11, 0) },
+      { startsAt: day3.setHours(12, 30) },
+      { startsAt: day3.setHours(16, 30) },
+      { startsAt: day5.setHours(18, 0) },
+      { startsAt: day5.setHours(18, 30) },
+      { startsAt: day7.setHours(10, 0) },
+    ],
+  },
 ];
 
 export const sampleServices = [

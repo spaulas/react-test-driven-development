@@ -10,14 +10,21 @@ describe("<AppointmentForm />", () => {
 
   const emptyProps = {
     services: [],
+    stylists: [],
     values: {},
     onSubmit: () => null,
+    openingTime: 9,
+    closingTime: 19
+
   };
 
   const defaultProps = {
     services: ["haircut", "color"],
+    stylists: [],
     values: { service: "color" },
     onSubmit: () => null,
+    openingTime: 9,
+    closingTime: 19
   };
 
   // ------------------------------
@@ -145,7 +152,7 @@ describe("<AppointmentForm />", () => {
       const optionNodes: Array<Node> = Array.from(
         formField("service").childNodes
       );
-      const renderedServices: Array<string | null> = optionNodes.map(
+      const renderedServices: Array<string | null> = optionNodes?.map(
         (node: Node) => node.textContent
       );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { AppointmentForm } from "@components/Forms/AppointmentForm";
 import "./AddAppointment.scss";
-import { sampleServices, openingTime, closingTime } from "@data";
+import { sampleServices, sampleStylists, openingTime, closingTime } from "@data";
 
 function AddAppointment(): JSX.Element {
   const handleSubmit = () => console.log("submit");
@@ -11,6 +11,7 @@ function AddAppointment(): JSX.Element {
       <span className="add-customer-page--title">Add a new Appointment</span>
       <AppointmentForm
         services={sampleServices}
+        stylists={sampleStylists}
         onSubmit={handleSubmit}
         values={values}
         openingTime={openingTime}

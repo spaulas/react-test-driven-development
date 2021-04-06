@@ -1,0 +1,96 @@
+@import "@styles/imports.scss";
+
+.time-slots {
+  color: $purple-darker;
+  width: 80%;
+  margin-left: auto;
+  border-collapse: collapse;
+  background: rgba($pink-light, 0.5);
+  border-radius: 16px;
+  padding: 8px;
+
+  & > thead {
+    @include label;
+    text-transform: uppercase;
+
+    & > tr {
+      height: 32px;
+    }
+  }
+
+  & > tbody {
+    @include body;
+
+    & > tr {
+      height: 24px;
+      border-bottom: 1px solid $pink-normal;
+
+      &:last-child {
+        border: none;
+      }
+
+      & > td {
+        text-align: center;
+        justify-content: center;
+        height: 24px;
+
+        & > .radio-container {
+          width: 100%;
+          height: 100%;
+          max-height: 24px;
+          display: block;
+          position: relative;
+
+          & > input {
+            opacity: 0;
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+            margin: 0;
+
+            &:checked ~ .radio {
+              background-color: $purple-lighter;
+            }
+
+            &:checked ~ .radio::after {
+              display: block;
+            }
+          }
+
+          & > .radio {
+            height: 20px;
+            width: 20px;
+            background-color: $white;
+            border-radius: 50%;
+            transition: 0.2s ease;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            top: 1.5px;
+            left: calc((100% - 20px) / 2);
+            z-index: 1;
+
+            &::after {
+              content: "";
+              display: none;
+              width: 14px;
+              height: 14px;
+              border-radius: 50%;
+              margin: 3px;
+              background: $purple-light;
+            }
+          }
+
+          &:hover input ~ .radio {
+            background: $purple-lighter;
+          }
+
+          &:hover input:checked ~ .radio {
+            background: $purple-lighter;
+          }
+        }
+      }
+    }
+  }
+}

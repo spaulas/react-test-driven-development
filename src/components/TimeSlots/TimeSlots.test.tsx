@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { CreateContainerType, createContainer } from "@test/domManipulators";
-import { TimeSlot } from ".";
+import { TimeSlots } from ".";
 import ReactTestUtils from "react-dom/test-utils";
 
-describe("<TimeSlot />", () => {
+describe("<TimeSlots />", () => {
   let container: CreateContainerType["container"];
   let render: CreateContainerType["render"];
 
@@ -39,7 +40,7 @@ describe("<TimeSlot />", () => {
   });
 
   it("renders a time slot for every half an hour between open and close times", () => {
-    render(<TimeSlot {...defaultProps} />);
+    render(<TimeSlots {...defaultProps} />);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const timesOfDay = container.querySelectorAll("table>tbody>tr");
@@ -57,7 +58,7 @@ describe("<TimeSlot />", () => {
   });
 
   it("renders an empty cell at the start of the header row", () => {
-    render(<TimeSlot {...defaultProps} />);
+    render(<TimeSlots {...defaultProps} />);
 
     const headerRow = container.querySelector("table>thead>tr") as any;
 
@@ -65,7 +66,7 @@ describe("<TimeSlot />", () => {
   });
 
   it("renders a week of available dates", () => {
-    render(<TimeSlot {...defaultProps} today={new Date(2018, 11, 1)} />);
+    render(<TimeSlots {...defaultProps} today={new Date(2018, 11, 1)} />);
 
     const dates = container.querySelectorAll(
       "table>thead>tr>th:not(:first-child)"
@@ -80,7 +81,7 @@ describe("<TimeSlot />", () => {
 
   it("renders a radio button for each time slot", () => {
     render(
-      <TimeSlot {...defaultProps} availableTimeSlots={availableTimeSlots} />
+      <TimeSlots {...defaultProps} availableTimeSlots={availableTimeSlots} />
     );
 
     const cells = container.querySelectorAll("table>tbody>tr");
@@ -90,7 +91,7 @@ describe("<TimeSlot />", () => {
   });
 
   it("does not render radio buttons for unavailable time slots", () => {
-    render(<TimeSlot {...defaultProps} availableTimeSlots={[]} />);
+    render(<TimeSlots {...defaultProps} availableTimeSlots={[]} />);
 
     const cells = container.querySelectorAll(
       "table>tbody>tr>td>input[type='radio']"
@@ -100,7 +101,7 @@ describe("<TimeSlot />", () => {
 
   it("sets radio button values to the index of the corresponding appointment", () => {
     render(
-      <TimeSlot {...defaultProps} availableTimeSlots={availableTimeSlots} />
+      <TimeSlots {...defaultProps} availableTimeSlots={availableTimeSlots} />
     );
 
     expect(startsAtField(0).value).toEqual(
@@ -113,7 +114,7 @@ describe("<TimeSlot />", () => {
 
   it("pre selects the initial value", () => {
     render(
-      <TimeSlot
+      <TimeSlots
         {...defaultProps}
         availableTimeSlots={availableTimeSlots}
         value={availableTimeSlots[0].startsAt}
@@ -135,7 +136,7 @@ describe("<TimeSlot />", () => {
     expect.hasAssertions();
 
     render(
-      <TimeSlot
+      <TimeSlots
         {...defaultProps}
         availableTimeSlots={availableTimeSlots}
         value={availableTimeSlots[0].startsAt}
