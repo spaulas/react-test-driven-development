@@ -3,6 +3,7 @@ import { CreateContainerType, createContainer } from "@test/domManipulators";
 import { CustomerForm } from ".";
 import ReactTestUtils from "react-dom/test-utils";
 import { FormType, FormKeys } from "./types.d";
+import { spy } from '@test/utils';
 
 describe("<CustomerForm />", () => {
   let container: CreateContainerType["container"];
@@ -11,6 +12,7 @@ describe("<CustomerForm />", () => {
   const emptyProps = {
     values: {},
     onSubmit: () => null,
+    fetch: () => null,
   };
 
   const initialValues: FormType = {
@@ -82,6 +84,7 @@ describe("<CustomerForm />", () => {
       expect.hasAssertions();
       render(
         <CustomerForm
+          {...emptyProps}
           values={initialValues}
           onSubmit={(values: FormType) =>
             expect(values[fieldName]).toEqual(initialValues[fieldName])
@@ -96,13 +99,13 @@ describe("<CustomerForm />", () => {
   // check if the new values are submitted
   const itSavesNewValue = (fieldName: FormKeys, newValue: string | number) => {
     it("saves new value when submitted", async () => {
-      expect.hasAssertions();
+      const fetchSpy = spy();
+
       render(
         <CustomerForm
+          {...emptyProps}
           values={initialValues}
-          onSubmit={(values: FormType) =>
-            expect(values[fieldName]).toEqual(newValue)
-          }
+          fetch={fetchSpy.fn}
         />
       );
 
@@ -111,6 +114,10 @@ describe("<CustomerForm />", () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any);
       ReactTestUtils.Simulate.submit(formId());
+
+      const fetchOpts = fetchSpy.receivedArgument(1);
+
+      expect(JSON.parse(fetchOpts.body)[fieldName]).toEqual(newValue);
     });
   };
 
@@ -132,6 +139,22 @@ describe("<CustomerForm />", () => {
     render(<CustomerForm {...emptyProps} />);
     const submitButton = container.querySelector("input[type='submit']");
     expect(submitButton).not.toBeNull();
+  });
+
+  it("calls fetch with the right properties when submitting data", async() => {
+    const fetchSpy = spy();
+
+    render(<CustomerForm  {...emptyProps} fetch={fetchSpy.fn} onSubmit={() => { }} />);
+
+    ReactTestUtils.Simulate.submit(formId());
+    // expect(fetchSpy.fn).toHaveBeenCalled();
+    expect(fetchSpy.receivedArgument(0)).toEqual("/customers");
+
+    const fetchOpts = fetchSpy.receivedArgument(1);
+    expect(fetchOpts.method).toEqual("POST");
+    expect(fetchOpts.credentials).toEqual("same-origin");
+    expect(fetchOpts.headers).toEqual({'Content-Type': 'application/json'})
+
   });
 
   describe("firstName field", () => {

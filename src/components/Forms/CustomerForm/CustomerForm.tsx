@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Props, FormType } from "./types.d";
 import "../Form.scss";
 
-function CustomerForm({ values, onSubmit }: Props): JSX.Element {
+function CustomerForm({ values, onSubmit, fetch }: Props): JSX.Element {
   const [customer, setCustomer] = useState<FormType>(values);
 
   const handleChange = (newValue: {
@@ -11,8 +11,18 @@ function CustomerForm({ values, onSubmit }: Props): JSX.Element {
     setCustomer((customer) => ({ ...customer, ...newValue }));
   };
 
+  const handleSubmit = () => {
+    onSubmit(customer);
+    fetch("/customers", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(customer),
+    });
+  };
+
   return (
-    <form id="customer" className="form" onSubmit={() => onSubmit(customer)}>
+    <form id="customer" className="form" onSubmit={handleSubmit}>
       <div className="form--field-wrapper">
         <label htmlFor="firstName">First Name</label>
         <input
